@@ -41,6 +41,20 @@ def str_to_int_list(user_input) -> object:
 
     return split_input
 
+
+def count_cows_bulls(ran_cislo, zvolene_cislo):
+    bulls = 0
+    cows = 0
+    for i, j in zip(ran_cislo, zvolene_cislo):
+        if i == j:
+            bulls = bulls + 1
+        elif j in ran_cislo:
+            cows = cows + 1
+        else:
+            continue
+    print("bulls: ", bulls, "cows: ", cows)
+    return cows
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print("Hello in Bulls&Cows game")
@@ -48,6 +62,8 @@ if __name__ == '__main__':
     random_cislo = get_random()
     print("zadavej 4 cisla dokud neuhadnes")
     print(random_cislo)
+    cows_bulls = [0, 0, 0, 0]           # 0 - nothing, 1 - a cow, 2 - a bull
+    print(cows_bulls)
     while True:
         input_cislo = input(">>> ")
         input_cislo = str_to_int_list(input_cislo)
@@ -58,7 +74,10 @@ if __name__ == '__main__':
             print("vitezstvi")
             break
         else:
-            print("nevzdavej to")
+            bulls = 0
+            cows = 0
+            count_cows_bulls(random_cislo, input_cislo)
+            # print(f"bulls - {bulls}, cows - {cows}....nevzdavej to")
             continue
 
 
