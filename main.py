@@ -45,6 +45,8 @@ def str_to_int_list(user_input) -> object:
 def count_cows_bulls(ran_cislo, zvolene_cislo):
     bulls = 0
     cows = 0
+    bull_str = "bulls"
+    cow_str = "cows"
     for i, j in zip(ran_cislo, zvolene_cislo):
         if i == j:
             bulls = bulls + 1
@@ -52,8 +54,12 @@ def count_cows_bulls(ran_cislo, zvolene_cislo):
             cows = cows + 1
         else:
             continue
-    print("bulls: ", bulls, "cows: ", cows)
-    return cows
+    if bulls == 1:
+        bull_str = "bull"
+    if cows == 1:
+        cow_str = "cow"
+    print(f"You have found: ",bulls, f"{bull_str}"," & ", cows, f"{cow_str}, don't give up!")
+    return 0
 
 
 # Press the green button in the gutter to run the script.
