@@ -28,6 +28,7 @@ def get_random() -> object:
         int_seznam = list(set_seznam)
     return int_seznam
 
+
 def str_to_int_list(user_input) -> object:
     """
 
@@ -37,7 +38,6 @@ def str_to_int_list(user_input) -> object:
     split_input = split(str(user_input))
     for i in range(0, len(split_input)):
         split_input[i] = int(split_input[i])
-
 
     return split_input
 
@@ -55,6 +55,7 @@ def count_cows_bulls(ran_cislo, zvolene_cislo):
     print("bulls: ", bulls, "cows: ", cows)
     return cows
 
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print("Hello in Bulls&Cows game")
@@ -62,12 +63,17 @@ if __name__ == '__main__':
     random_cislo = get_random()
     print("zadavej 4 cisla dokud neuhadnes")
     print(random_cislo)
-    cows_bulls = [0, 0, 0, 0]           # 0 - nothing, 1 - a cow, 2 - a bull
+    cows_bulls = [0, 0, 0, 0]  # 0 - nothing, 1 - a cow, 2 - a bull
     print(cows_bulls)
     while True:
         input_cislo = input(">>> ")
+        try:
+            int(input_cislo)
+        except ValueError:
+            print("Cisla musi byt 4 unikatni a nezacinat nulou")
+            continue
         input_cislo = str_to_int_list(input_cislo)
-        if input_cislo[0] == 0 or len(set(input_cislo)) != 4:
+        if input_cislo[0] == 0 or len(set(input_cislo)) != 4 or len(input_cislo) != 4:
             print("Cisla musi byt 4 unikatni a nezacinat nulou")
             continue
         elif random_cislo == input_cislo:
@@ -80,11 +86,7 @@ if __name__ == '__main__':
             # print(f"bulls - {bulls}, cows - {cows}....nevzdavej to")
             continue
 
-
-
     # if test[0] == 0 or len(set(test)) != 4:
     #     print("podminka splnena")
-
-
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
